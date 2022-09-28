@@ -12,10 +12,12 @@ async function getJoke() {
     let joke = title + " " + selftext;
     return joke;
 }
-  
-getJoke()
-.then(joke => {
+
+async function sendJoke(joke) {
     clipboard.writeSync(joke)
     console.log(joke);
-})
+}
+  
+getJoke()
+.then(async joke => await sendJoke(joke))
 .catch(console.error);
